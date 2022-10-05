@@ -9,6 +9,14 @@ import (
 	"github.com/segmentio/kafka-go"
 )
 
+const (
+	// Kafka broker address
+	kafkaBroker = "localhost:9092"
+	// kafkaBroker = "172.23.0.2:30774"
+	// Kafka topic
+	kafkaTopic = "my-topic"
+)
+
 func main() {
 	produce()
 	consume()
@@ -16,10 +24,9 @@ func main() {
 
 func produce() {
 	// to produce messages
-	topic := "my-topic"
 	partition := 0
 
-	conn, err := kafka.DialLeader(context.Background(), "tcp", "localhost:9092", topic, partition)
+	conn, err := kafka.DialLeader(context.Background(), "tcp", kafkaBroker, kafkaTopic, partition)
 	if err != nil {
 		log.Fatal("failed to dial leader:", err)
 	}
@@ -42,10 +49,9 @@ func produce() {
 
 func consume() {
 	// to consume messages
-	topic := "my-topic"
 	partition := 0
 
-	conn, err := kafka.DialLeader(context.Background(), "tcp", "localhost:9092", topic, partition)
+	conn, err := kafka.DialLeader(context.Background(), "tcp", kafkaBroker, kafkaTopic, partition)
 	if err != nil {
 		log.Fatal("failed to dial leader:", err)
 	}

@@ -39,7 +39,7 @@ go run main.go
 
 
 # TODO:
-- authentication
+- authentication (vault takes time until october 22 (https://github.com/external-secrets/external-secrets/issues/976))
 - TLS
 - logging
 - metrics
